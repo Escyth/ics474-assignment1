@@ -93,15 +93,15 @@ docker exec -it assignment1-jobmanager-1 /opt/flink/bin/flink run "-Dexecution.r
 The following summarizes observed trends for each variable.
 
 Based on the data volume experiment measurements:
-- CPU usage increases from low percentages to higher percentages demonstrating full utilization of available slots once data is sufficient to saturate both cores.
-- Stable memory usage, around 7-8%, indicating efficient state management.
-- Network I/O is constant because shuffling occurs once regardless of input size.
-- In execution time, we can almost notice exact linearity, confirming predictable throughput aligning with what we theoretically studied (0.5s -- *13.8 size --> 6.7s -- *2.8 size --> 18.6s).
+- CPU usage increases from low percentages to higher percentages demonstrating full utilization of available slots once data is sufficient to saturate both cores
+- Stable memory usage, around 7-8%, indicating efficient state management
+- Network I/O is constant because shuffling occurs once regardless of input size
+- In execution time, we can almost notice exact linearity, confirming predictable throughput aligning with what we theoretically studied (0.5s -- *13.8 size --> 6.7s -- *2.8 size --> 18.6s)
 
 Based on the compute nodes experiment measurements:
-- CPU usage per TaskManager decreases as more nodes are added, showing distribution of workload. Additionally, overall usage remains around ~140% confirming parallel execution.
-- Memory usage is consistent, demonstrating that scaling increases available slots but doesn't inflate per-node memory overhead.
-- Execution time slightly improves; however, its scaling efficiency is limited by network and coordination costs, but still shows measurable gains.
+- CPU usage per TaskManager decreases as more nodes are added, showing distribution of workload. Additionally, overall usage remains around ~140% confirming parallel execution
+- Memory usage is consistent, demonstrating that scaling increases available slots but doesn't inflate per-node memory overhead
+- Execution time slightly improves; however, its scaling efficiency is limited by network and coordination costs, but still shows measurable gains
 
 ## Conclusion
 The experiments demonstrate that Apache Flink efficiently scales both vertically (with data volume) and horizontally (with additional TaskManagers). While CPU utilization and throughput increase predictably with workload size, network overhead limits linear speedup in multi-node configurations — a realistic behavior for distributed systems.
