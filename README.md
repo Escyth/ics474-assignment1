@@ -6,6 +6,8 @@
 
 **Tool:** [Apache Flink](https://flink.apache.org/)
 
+**Demo**: https://youtu.be/IPROpHU06tE
+
 ## Installation:
 The team chose a local cluster approach with containers using [Docker](https://www.docker.com/) because it's 1. easier to manage, 2. sufficient to simulate the environment.
 
